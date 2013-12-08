@@ -8,7 +8,7 @@
 </tr>
 <tr>
 <td>Description</td>
-<td>Karma test runner plugin for Gulp.</td>
+<td>Karma test runner for Gulp.</td>
 </tr>
 <tr>
 <td>Node Version</td>
