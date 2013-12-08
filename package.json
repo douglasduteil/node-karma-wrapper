@@ -17,8 +17,14 @@
     "runner",
     "TDD"
   ],
+  "scripts": {
+    "test": "gulp"
+  },
   "dependencies": {
     "karma": "*"
+  },
+  "devDependencies": {
+    "gulp": "*"
   },
   "engines": {
     "node": ">= 0.6.0"
