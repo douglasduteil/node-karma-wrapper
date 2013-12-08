@@ -1,7 +1,7 @@
 {
   "name": "gulp-karma",
   "description": "Karma test runner for Gulp",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "http://github.com/douglasduteil/gulp-karma",
   "repository": {
     "type": "git",
