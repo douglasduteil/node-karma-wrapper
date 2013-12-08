@@ -1,4 +1,4 @@
-# gulp-karma [![Build Status](https://travis-ci.org/douglasduteil/gulp-karma.png)](https://travis-ci.org/douglasduteil/gulp-karma)
+# gulp-karma [![Build Status](https://travis-ci.org/douglasduteil/gulp-karma.png)](https://travis-ci.org/douglasduteil/gulp-karma) [![NPM version](https://badge.fury.io/js/gulp-karma.png)](http://badge.fury.io/js/gulp-karma)
 
 ## Information
 
