@@ -1,0 +1,33 @@
+{
+  "name": "gulp-karma",
+  "description": "Karma test runner plugin for Gulp",
+  "version": "0.1.0",
+  "homepage": "http://github.com/douglasduteil/gulp-karma",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/douglasduteil/gulp-karma.git"
+  },
+  "main": "./index.js",
+  "keywords": [
+    "gulpplugin",
+    "karma",
+    "gulp",
+    "test",
+    "unit",
+    "runner",
+    "TDD"
+  ],
+  "peerDependencies": {
+    "gulp": "*",
+    "karma": "*"
+  },
+  "engines": {
+    "node": ">= 0.6.0"
+  },
+  "bugs": {
+    "url": "https://github.com/douglasduteil/gulp-karma/issues"
+  },
+  "author": "Douglas Duteil <douglasduteil@gmail.com>",
+  "license": "MIT",
+  "readmeFilename": "README.md"
+}
