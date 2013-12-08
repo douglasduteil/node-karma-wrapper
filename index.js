@@ -12,16 +12,11 @@ function karmaPlugin(opts, cb){
     opts.configFile = path.join(process.cwd(), opts.configFile);
   }
 
-  if( opts && opts.simpleRun){
-    spawn('node',
-      [path.join(__dirname , 'lib', 'server_process.js'), JSON.stringify(opts)],
-      { stdio: 'inherit' },
-      function(){ cb(); }
-    );
+  var args = [path.join(__dirname , 'lib', 'server_process.js'), JSON.stringify(opts)];
+  if( opts && ! opts.background){
+    spawn('node', args, { stdio: 'inherit' }, function(){ cb(); } );
   }else{
-    spawn('node',
-      [path.join(__dirname , 'lib', 'server_process.js'), JSON.stringify(opts)]
-    );
+    spawn('node', args);
     cb();
   }
 

@@ -28,7 +28,7 @@ gulp.task('test', function(cb){
 
 gulp.task('serve', function(){
   // Launch a karma serve in background
-  karma({ configFile : './test/karma.conf.js', singleRun: false }, function(){});
+  karma({ configFile : './test/karma.conf.js', background: true }, function(){});
 
   gulp.task('continuous testing', function(cb){
     // Run the tests using the already running karma server
