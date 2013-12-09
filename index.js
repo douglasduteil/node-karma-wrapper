@@ -14,9 +14,15 @@ function karmaPlugin(opts, done){
 
   var args = [path.join(__dirname , 'lib', 'server_process.js'), JSON.stringify(opts)];
   if( opts && ! opts.background){
-    spawn('node', args, { stdio: 'inherit' }, function(){ done(); } );
+    spawn('node', args, { stdio: 'inherit' })
+      .on('close', function (code) {
+        done(code);
+      });
   }else{
-    spawn('node', args);
+    spawn('node', args)
+      .on('close', function (code) {
+        console.log('The background karma server stops. code ' + code);
+      });
     done();
   }
 
