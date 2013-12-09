@@ -6,7 +6,7 @@ var runner = require('karma').runner;
 var path = require('path');
 var spawn = require('child_process').spawn;
 
-function karmaPlugin(opts, cb){
+function karmaPlugin(opts, done){
 
   if( opts && opts.configFile){
     opts.configFile = path.join(process.cwd(), opts.configFile);
@@ -14,21 +14,21 @@ function karmaPlugin(opts, cb){
 
   var args = [path.join(__dirname , 'lib', 'server_process.js'), JSON.stringify(opts)];
   if( opts && ! opts.background){
-    spawn('node', args, { stdio: 'inherit' }, function(){ cb(); } );
+    spawn('node', args, { stdio: 'inherit' }, function(){ done(); } );
   }else{
     spawn('node', args);
-    cb();
+    done();
   }
 
 }
 
-karmaPlugin.run = function(opts, cb){
+karmaPlugin.run = function(opts, done){
 
   if( opts && opts.configFile){
     opts.configFile = path.join(process.cwd(), opts.configFile);
   }
 
-  runner.run(opts, function() { cb(); });
+  runner.run(opts, function() { done(); });
 
 };
 

@@ -1,17 +1,17 @@
 {
-  "name": "gulp-karma",
-  "description": "Karma test runner for Gulp",
+  "name": "node-karma-wrapper",
+  "description": "Karma test runner wrapper",
   "version": "0.1.2",
-  "homepage": "http://github.com/douglasduteil/gulp-karma",
+  "homepage": "http://github.com/douglasduteil/node-karma-wrapper",
   "repository": {
     "type": "git",
-    "url": "git://github.com/douglasduteil/gulp-karma.git"
+    "url": "git://github.com/douglasduteil/node-karma-wrapper.git"
   },
   "main": "./index.js",
   "keywords": [
     "gulpfriendly",
+    "helper",
     "karma",
-    "gulp",
     "test",
     "unit",
     "runner",
@@ -31,7 +31,7 @@
     "node": ">= 0.6.0"
   },
   "bugs": {
-    "url": "https://github.com/douglasduteil/gulp-karma/issues"
+    "url": "https://github.com/douglasduteil/node-karma-wrapper/issues"
   },
   "author": "Douglas Duteil <douglasduteil@gmail.com>",
   "license": "MIT",
