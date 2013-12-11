@@ -34,7 +34,6 @@ function karmaPlugin(opts){
 
   _this.simpleRun = function (done) {
     _this.config.singleRun = true;
-    console.log(_this.config);
     var args = [path.join(__dirname , 'lib', 'server_process.js'), JSON.stringify(_this.config)];
     spawn('node', args, { stdio: 'inherit' })
       .on('close', function (code) {

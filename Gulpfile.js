@@ -1,19 +1,22 @@
-;(function() {
-  'use strict';
+/* jshint node: true */
 
-  var assign = require('lodash.assign');
-  var gulp = require('gulp');
-  var karma = require('./index.js');
+'use strict';
 
-  gulp.task('default', function(cb){
-    function testConfig(configFile, customOptions){
-      var options = { configFile: configFile, singleRun: true };
-      var travisOptions = process.env.TRAVIS && { browsers: [ 'Firefox', 'PhantomJS'], reporters: ['dots'] };
-      return assign(options, customOptions, travisOptions);
-    }
+var assign = require('lodash.assign');
+var gulp = require('gulp');
+var karma = require('./index.js');
 
-    karma(testConfig('./test/karma.conf.js'), cb);
-  });
+// TRAVIS TRICKS
+function testConfig(configFile, customOptions){
+  var options = { configFile: configFile };
+  var travisOptions = process.env.TRAVIS && { browsers: [ 'Firefox', 'PhantomJS'], reporters: ['dots'] };
+  return assign(options, customOptions, travisOptions);
+}
 
-})();
+var myKarmaServer = karma(testConfig('./test/karma.conf.js'));
+
+gulp.task('default', function(cb){
+  myKarmaServer.simpleRun(cb);
+});
+
 
