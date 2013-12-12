@@ -1,5 +1,7 @@
 # node-karma-wrapper [![Build Status](https://travis-ci.org/douglasduteil/node-karma-wrapper.png)](https://travis-ci.org/douglasduteil/node-karma-wrapper) [![NPM version](https://badge.fury.io/js/node-karma-wrapper.png)](http://badge.fury.io/js/node-karma-wrapper)
 
+I'm just wrapping the [the karma public API](http://karma-runner.github.io/0.10/dev/public-api.html) here.
+
 ## Information
 
 <table>
@@ -21,35 +23,61 @@
 ```javascript
 var karma = require('node-karma-wrapper');
 
-// Run the tests once
-karma({ configFile : './test/karma.conf.js', singleRun: true });
+// Preconfig you server
+var aKarmaTestServer = karma({ configFile : './test/karma.conf.js');
 
-// Launch a karma serve in background
-karma({ configFile : './test/karma.conf.js', background: true });
+// Then run once
+aKarmaTestServer.simpleRun();
 
-// Run the tests using the already running karma server
-karma.run({ configFile : './test/karma.conf.js'});
+// Run in background
+aKarmaTestServer.inBackground();
+
+// Normal launch
+aKarmaTestServer.start();
+
+// Run the tests using the already started karma server
+aKarmaTestServer.run();
 ```
 
 ## Api
 
-Just some Karma helper function that uses [the karma public API](http://karma-runner.github.io/0.10/dev/public-api.html).
+### karma(configs)
 
-#### karma(configs[, done])
+Defines a karma server with a specific configuration (see [the official api](http://karma-runner.github.io/0.10/config/configuration-file.html)).
+Return a « Karma Helper Object »
+
+
+### « Karma Helper Object » methods
+
+#### kho.start([callback])
 
 Equivalent of karma start.
 
-#### karma.run(configs[, done])
+#### kho.run(callback)
 
 Equivalent of karma run.
 
-## Background option
+#### kho.inBackground([callback])
 
-On continuous integration you can use the `background: true` option to start the karma server without blocking the main process.
+On continuous integration you can start the karma server without blocking the main process and without logging anything.
+
+#### kho.simpleRun([callback])
+
+Equivalent of karma start with the *singleRun* option on.
 
 ## Travis CI trick
 
-Like Travis
+Here is a way to run specific config on Travis :
+
+```javascript
+var assign = require('lodash.assign');
+
+// TRAVIS TRICKS
+function testConfig(configFile, customOptions){
+  var options = { configFile: configFile };
+  var travisOptions = process.env.TRAVIS && { browsers: [ 'Firefox', 'PhantomJS'], reporters: ['dots'] };
+  return assign(options, customOptions, travisOptions);
+}
 ```
 
 
