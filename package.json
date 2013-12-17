@@ -21,7 +21,8 @@
     "test": "gulp"
   },
   "dependencies": {
-    "karma": "*"
+    "karma": "*",
+    "event-stream": "~3.0.20"
   },
   "devDependencies": {
     "gulp": "*",

@@ -4,6 +4,7 @@
 
 var runner = require('karma').runner;
 var path = require('path');
+var es = require('event-stream');
 var spawn = require('child_process').spawn;
 
 function karmaPlugin(opts){
@@ -45,7 +46,19 @@ function karmaPlugin(opts){
     runner.run(_this.config, function() { done && done(); });
   };
 
+  _this.test = function(){
+    return es.map(function (file, done) {
+    _this.config.singleRun = true;
+    _this.config.files = (_this.config.files || []).concat([file.path]);
+    var args = [path.join(__dirname , 'lib', 'server_process.js'), JSON.stringify(_this.config)];
+    spawn('node', args, { stdio: 'inherit' })
+      .on('close', function (code) {
+        done && done(code);
+      });
+    });
+  };
+
   return _this;
-};
+}
 
 module.exports =  karmaPlugin;

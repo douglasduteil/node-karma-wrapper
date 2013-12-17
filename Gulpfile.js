@@ -16,7 +16,11 @@ function testConfig(configFile, customOptions){
 var myKarmaServer = karma(testConfig('./test/karma.conf.js'));
 
 gulp.task('default', function(cb){
-  myKarmaServer.simpleRun(cb);
+  //myKarmaServer.simpleRun(cb);
+  gulp.src('test/*.spec.js')
+    .pipe(myKarmaServer.test())
+    .on('end', cb);
+    
 });
 
 
