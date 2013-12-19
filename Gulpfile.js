@@ -13,14 +13,15 @@ function testConfig(configFile, customOptions){
   return assign(options, customOptions, travisOptions);
 }
 
-var myKarmaServer = karma(testConfig('./test/karma.conf.js'));
+var myKarmaServer = karma(testConfig('./test/karma.conf.js', {files: ['src/*.js']}));
 
 gulp.task('default', function(cb){
   //myKarmaServer.simpleRun(cb);
+
   gulp.src('test/*.spec.js')
-    .pipe(myKarmaServer.test())
-    .on('end', cb);
-    
+   .pipe(myKarmaServer.stremTest())
+   .pipe(karma.reporter())
+   .on('end', cb);
 });
 
 

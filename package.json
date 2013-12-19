@@ -22,7 +22,9 @@
   },
   "dependencies": {
     "karma": "*",
-    "event-stream": "~3.0.20"
+    "event-stream": "~3.0.20",
+    "karma-json-reporter": "git://github.com/douglasduteil/karma-json-reporter",
+    "gulp-util": "~2.1.4"
   },
   "devDependencies": {
     "gulp": "*",
