@@ -24,6 +24,8 @@ function karmaPlugin(opts){
   };
 
   _this.inBackground = function (done) {
+    // Force no single run
+    _this.config.singleRun = false;
     var args = [path.join(__dirname , 'lib', 'server_process.js'), JSON.stringify(_this.config)];
     spawn('node', args)
       .on('close', function (code) {
@@ -33,6 +35,7 @@ function karmaPlugin(opts){
   };
 
   _this.simpleRun = function (done) {
+    // Force single run
     _this.config.singleRun = true;
     var args = [path.join(__dirname , 'lib', 'server_process.js'), JSON.stringify(_this.config)];
     spawn('node', args, { stdio: 'inherit' })

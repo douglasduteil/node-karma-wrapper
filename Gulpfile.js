@@ -1,4 +1,4 @@
-/* jshint node: true */
+    /* jshint node: true */
 
 'use strict';
 
@@ -17,6 +17,15 @@ var myKarmaServer = karma(testConfig('./test/karma.conf.js'));
 
 gulp.task('default', function(cb){
   myKarmaServer.simpleRun(cb);
+});
+
+gulp.task('serve', function(cb){
+  myKarmaServer.inBackground();
+
+  gulp.watch('./test/foo.spec.js', function(){
+    myKarmaServer.run();
+  });
+
 });
 
 
