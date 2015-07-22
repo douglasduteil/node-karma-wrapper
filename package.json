@@ -21,7 +21,7 @@
     "test": "gulp"
   },
   "dependencies": {
-    "karma": "*"
+    "karma": "> 0.13.0"
   },
   "devDependencies": {
     "gulp": "*",
